@@ -13,3 +13,4 @@ media
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea1
+nginx/cert
