@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Beautiful Slovenia</title>
+
+	<link rel="stylesheet" href="{% static 'css_slovenia/main.css' %}">
+	<script src="{% static 'js_slovenia/app.js' %}" defer></script>
+
+</head>
+<body>
+
+	<div class="container">
+		<section class="gallery">
+
+			<div class="frame">
+				<div class="frame__content">
+					<h2>Beautiful Slovenia</h2>
+				</div>
+			</div>
+
+			<div class="frame">
+				<div class="frame__content">
+					<div class="frame-media frame-media_left" style="background-image: url({% static 'images_slovenia/1.jpg' %})"></div>
+				</div>
+			</div>
+
+			<div class="frame frame_bg">
+				<div class="frame__content">
+					<video class="frame-media frame-media_right" src="{% static 'media_slovenia/video_optimized.mp4' %}" autoplay loop muted></video>
+				</div>
+			</div>
+
+			<div class="frame"></div>
+
+			<div class="frame">
+				<div class="frame__content text-right">
+					<h3>Kranjska Gora</h3>
+					<p>Kranjska Gora is best known as a Julian Alps.</p>
+				</div>
+			</div>
+
+			<div class="frame frame_bg">
+				<div class="frame__content">
+					<div class="frame-media frame-media_left" style="background-image: url({% static 'images_slovenia/2.jpg' %})"></div>
+				</div>
+			</div>
+
+			<div class="frame"></div>
+
+			<div class="frame">
+				<div class="frame__content text-left">
+					<h3>MANGARTSKO SEDLO</h3>
+					<p>One of the most majestic mountains of the Slovenian Julian Alps.</p>
+				</div>
+			</div>
+
+			<div class="frame frame_bg">
+				<div class="frame__content">
+					<div class="frame-media frame-media_right" style="background-image: url({% static 'images_slovenia/3.jpg' %})"></div>
+				</div>
+			</div>
+
+			<div class="frame">
+				<div class="frame__content">
+					<video class="frame-media frame-media_left" src="{% static 'media_slovenia/video_optimized.mp4' %}" autoplay loop muted></video>
+				</div>
+			</div>
+
+			<div class="frame"></div>
+
+			<div class="frame">
+				<div class="frame__content text-right">
+					<h3>Bled Island</h3>
+					<p>The most recognisable symbol of the island is the Church of the Mother of God on the lake with a long and diverse history.</p>
+				</div>
+			</div>
+
+			<div class="frame frame_bg">
+				<div class="frame__content">
+					<div class="frame-media frame-media_left" style="background-image: url({% static 'images_slovenia/4.jpg' %})"></div>
+				</div>
+			</div>
+
+			<div class="frame"></div>
+
+
+			<div class="frame">
+				<div class="frame__content text-left">
+					<h3>I</h3>
+					<p>it is me.</p>
+				</div>
+			</div>
+
+			<div class="frame frame_bg">
+				<div class="frame__content">
+					<div class="frame-media frame-media_right" style="background-image: url({% static 'images_slovenia/5.jpg' %})"></div>
+				</div>
+			</div>
+
+			<div class="frame"></div>
+
+            {% for article in articles %}
+                <div class="frame"></div>
+
+
+                <div class="frame">
+                    <div class="frame__content text-{{ article.location_text }}">
+                        <h3>{{ article.name }}</h3>
+                        <p>{{ article.description }}</p>
+                    </div>
+                </div>
+
+                <div class="frame frame_bg">
+                    <div class="frame__content">
+                        <div class="frame-media frame-media_{{ article.location_image }}" style="background-image: url({{ article.image }})"></div>
+                    </div>
+                </div>
+
+                <div class="frame"></div>
+            {% endfor %}
+
+
+			<div class="frame frame_bg">
+				<div class="frame__content">
+					<video class="frame-media" src="{% static 'media_slovenia/video_optimized.mp4' %}" autoplay loop muted></video>
+				</div>
+			</div>
+
+			<div class="frame"></div>
+			<div class="frame"></div>
+
+			<div class="frame">
+				<div class="frame__content">© WebDeveloper Makarenko</div>
+			</div>
+
+		</section>
+	</div>
+
+	<img class="soundbutton paused" src="{% static 'images_slovenia/sound.gif' %}" alt="Alt">
+	<audio class="audio" src="{% static 'media_slovenia/ambient.mp3' %}" loop></audio>
+
+</body>
+</html>
