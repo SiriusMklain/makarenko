@@ -429,19 +429,32 @@ function tabMobiChange() {
 }
 
 $(document).ready(function () {
-    let input = document.getElementById("phone");
+    document.getElementById("phone").addEventListener("keydown", function (event) {
+        const charCode = event.which || event.keyCode;
+        const phone = this.value.replace(/\D/g, '');
 
-    input.addEventListener("input", function (e) {
-        let x = e.target.value.replace(/\D/g, '').match(/(\d{3})(\d{3})(\d{2})(\d{2})/);
-        e.target.value = !x[2] ? x[1] : '+7 ' + x[1] + ' ' + x[2] + ' ' + x[3] + ' ' + x[4];
-    });
-
-    input.addEventListener("keydown", function (e) {
-        if (e.key.length === 1 && e.key.match(/\d/)) {
+        // Allow deletion of characters with backspace key
+        if (charCode === 8) {
+            this.value = phone;
             return;
         }
-        e.preventDefault();
+
+        if (phone.length >= 10) {
+            event.preventDefault();
+            return;
+        }
+
+        if (phone.length < 3) {
+            this.value = `${phone}`;
+        } else if (phone.length < 6) {
+            this.value = `${phone.slice(0, 3)} ${phone.slice(3)}`;
+        } else if (phone.length < 8) {
+            this.value = `${phone.slice(0, 3)} ${phone.slice(3, 6)} ${phone.slice(6)}`;
+        } else {
+            this.value = `${phone.slice(0, 3)} ${phone.slice(3, 6)} ${phone.slice(6, 8)} ${phone.slice(8)}`;
+        }
     });
+
 });
 
 
